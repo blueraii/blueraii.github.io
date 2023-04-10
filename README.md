@@ -1,7 +1,7 @@
 # spinny-zone
 its the spinny zone
 
-Really just a personal playground for me and my friends, taken a lot of inspiration from some of my favorite sites, like viramate.
+Really just a personal playground for me and my friends, taken a lot of inspiration from some of my favorite sites, like viramate (I don't endorse the past use of that tool in any way, I just like their website).
 
 BEWARE: the site is currently NOT optimized at all for mobile devices, browse at your own risk!
 
