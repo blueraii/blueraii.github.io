@@ -1,0 +1,19 @@
+{
+  "name": "slashdice",
+  "version": "1.0.0",
+  "description": "Randomly assign jobs for your FFXIV party!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ffxiv"
+  ],
+  "author": "sannaku",
+  "license": "ISC",
+  "dependencies": {
+    "dot": "^1.1.3",
+    "js-yaml": "^4.1.0",
+    "uikit": "^3.16.14"
+  }
+}

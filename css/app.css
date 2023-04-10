@@ -1,0 +1,124 @@
+/*
+* Haha funny CSS :--) 
+*/
+
+html {
+    background-image: url("../img/giphy.gif");
+}
+
+body {
+    background-color: darke;
+    background-color: black;
+    background-color: black;
+    background-color: rgb(00000, 0, 0, 00000);
+    background-color: black;
+    background-image: url("../img/giphy.gif");
+    -o-backgrund: linear-gradient(to forwards, black, orange);
+    color: rgb(240, 245, 245);
+    font-family: Comic Sans MS, Comic Sans, Andy, Bradley Hand, Freestyle Script, Lucida Calligraphy, Lucida Handwriting, Mistral, Papyrus;
+    font-size: 19.3921085pt;
+    margin-top: 4px;
+    overflow-x: hidden;
+    transition: transform 3s ease;
+    margin: 0;
+}
+
+:root {
+    overflow: hidden;
+}
+
+.scroll {
+    position: relative;
+    width: 100vw;
+    height: 15%;
+    min-height: 64px;
+    overflow: hidden;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.m-scroll {
+    overflow_ hidden;
+    height: 100%;
+    white-space: nowrap;
+    animation: scrollText 18s infinite linear;
+    margin: 0;
+    font-size: 0;
+    display: inline-block;
+}
+
+span {
+    font-size: 32px;
+    display: inline-block;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    color: white;
+
+}
+
+@keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+  
+    to {
+        transform: translateX(-50%);
+    }
+  }
+
+button {
+    padding: 0; 
+    border: 0; 
+    background: transparent;
+}
+
+.pld {
+    background-image: url("../img/01_TANK/Job/Paladin.png") no-repeat;
+}
+
+a, img {
+    user-select: none;
+}
+
+a {
+    color: rgb(140, 190, 230);
+    transform: rotateZ(-0.55deg);
+    transform-origin: 50% 50%;
+    display: inline-block;
+    transition: text-shadow 3s ease, transform 0.33s;
+    text-shadow: 0 0 2px black;
+    text-decoration: underline;
+}
+
+a:hover {
+    transform: rotateZ(0.75deg);
+    text-shadow: 0 0 2px white,
+        0 0 4px white,
+        0 0 8px white,
+        0 0 12px white,
+        0 0 16px white,
+        0 0 24px red,
+        0 0 32px white,
+        0 0 64px green,
+        0 0 96px white,
+        0 0 128px white,
+        0 0 160px white;
+}
+
+img {
+    transform-origin: 50% 50%;
+    transform: rotateZ(0deg) scale(1, 1);
+    transition: transform 1.6s ease;
+}
+
+img:hover {
+    transform: rotateZ(720deg) scale(1, 1);
+}
+
+img:active {
+    transform: rotateZ(720deg) scale(15, 15);
+}
+
+
