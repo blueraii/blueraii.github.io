@@ -13,7 +13,6 @@ body {
     background-color: rgb(00000, 0, 0, 00000);
     background-color: black;
     background-image: url("../img/giphy.gif");
-    -o-backgrund: linear-gradient(to forwards, black, orange);
     color: rgb(240, 245, 245);
     font-family: Comic Sans MS, Comic Sans, Andy, Bradley Hand, Freestyle Script, Lucida Calligraphy, Lucida Handwriting, Mistral, Papyrus;
     font-size: 19.3921085pt;
@@ -25,6 +24,33 @@ body {
 
 :root {
     overflow: hidden;
+}
+
+#fireline{
+    display: none;
+    background-image: url("../img/firelininie.gif");
+    background-repeat: repeat-x;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+
+}
+
+div#help {
+    display: none;
+    color: rgb(255, 247, 224);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgb(255, 247, 224);
+    width: 480px;
+    height: 240px;
+    border-style: groove;
+    border-top-width: 5px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    position: absolute;
+    float: left;
+    z-index: 9999;
 }
 
 .scroll {
@@ -39,7 +65,7 @@ body {
 }
 
 .m-scroll {
-    overflow_ hidden;
+    overflow: hidden;
     height: 100%;
     white-space: nowrap;
     animation: scrollText 18s infinite linear;
@@ -72,10 +98,6 @@ button {
     padding: 0; 
     border: 0; 
     background: transparent;
-}
-
-.pld {
-    background-image: url("../img/01_TANK/Job/Paladin.png") no-repeat;
 }
 
 a, img {
@@ -119,6 +141,10 @@ img:hover {
 
 img:active {
     transform: rotateZ(720deg) scale(15, 15);
+}
+
+img#helpme:hover {
+    display: inline-block;
 }
 
 

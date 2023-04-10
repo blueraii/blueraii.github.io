@@ -10,6 +10,13 @@ const DPS = "img/03_DPS/Job/";
 var TANK_TAKEN = false;
 var HEALER_TAKEN = false;
 
+var midnightGang = {
+    "0": "Aerla Aesta",
+    "1": "Cral Smock",
+    "2": "Nixie Marigold",
+    "3": "Saturo Azad"
+}
+
 var jobNames = {
     "0": "Paladin",
     "1": "Warrior",
@@ -49,8 +56,29 @@ function removePlayer(el){
         el.closest('tr').remove();
 }
 
+function spinMidnightGang(){
+    var tableRef = document.getElementById('row_container');
+    var rowCount = tableRef.childElementCount;
+    var playerName = tableRef.querySelector("input");
+    var gangMember;
+
+    while(rowCount < 4 ){
+        addPlayer();
+        gangMember = midnightGang[rowCount];
+        playerName =  tableRef.rows[rowCount].querySelector("input");
+
+        console.log(gangMember);
+        playerName.setAttribute("placeholder",`${gangMember}`);
+        console.log(playerName);
+        
+        rowCount++;
+    }
+
+}
+
 function slashDice(){
-    // Reset
+
+    // THIS IS UGLY DO BETTER
     TANK_TAKEN = false;
     HEALER_TAKEN = false;
 
@@ -70,22 +98,35 @@ function jobSpin(el){
     console.log("healer_taken = " + HEALER_TAKEN);
     console.log("tank_taken = " + TANK_TAKEN);
 
+    // Okay just kidding, this is uglier
     switch(true) {
         case (TANK_TAKEN && HEALER_TAKEN):
-            randJob(el, 8, MAX_DPS, DPS);
+            randDPS(el);
             break;
         case (jobNum > MAX_TANK && jobNum < MAX_HEAL):
-            randJob(el, 4, MAX_HEAL, HEALERS);
+            randHealer(el);
             HEALER_TAKEN = true;
             break;
         case (jobNum < MAX_TANK):
-            randJob(el, 0, MAX_TANK, TANKS);
+            randTank(el);
             TANK_TAKEN = true;
             break;
         default:
-            randJob(el, 8, MAX_DPS, DPS);
+            randDPS(el);
             break;
     }
+}
+
+function randTank(el){
+    return randJob(el, 0, MAX_TANK, TANKS);
+}
+
+function randHealer(el){
+    return randJob(el, 4, MAX_HEAL, HEALERS);
+}
+
+function randDPS(el){
+    return randJob(el, 8, MAX_DPS, DPS);
 }
 
 function randJob(el,min,max,role){
