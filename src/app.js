@@ -41,6 +41,11 @@ var jobNames = {
     "18": "RedMage"
 }
 
+function toggleButton(){
+    var el = document.getElementById(".destroyAll");
+    el.classList.toggle('destroyAll');
+}
+
 
 function addPlayer(){
 
@@ -49,11 +54,25 @@ function addPlayer(){
 
     var img = `<img src=${TANKS}${jobNames[3]}.png>`
 
+    // christ allmighty please change this into something else
     row.innerHTML = '<td><button onclick="jobSpin(this)" class="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank" type="text"  placeholder="Add player name..."> </td><td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
 }
 
 function removePlayer(el){
         el.closest('tr').remove();
+        console.log(`removed ${el}`)
+}
+
+function removeAllPlayers(){
+    var tableRef = document.getElementById('row_container');
+    var rowCount = tableRef.childElementCount;
+
+    while(rowCount > 0){
+        var el = tableRef.rows[0]
+        removePlayer(el);
+        rowCount--;
+    }
+
 }
 
 function spinMidnightGang(){
@@ -67,10 +86,10 @@ function spinMidnightGang(){
         gangMember = midnightGang[rowCount];
         playerName =  tableRef.rows[rowCount].querySelector("input");
 
-        console.log(gangMember);
+        console.log(` adding ${gangMember}`);
         playerName.setAttribute("placeholder",`${gangMember}`);
         console.log(playerName);
-        
+
         rowCount++;
     }
 
@@ -93,6 +112,30 @@ function slashDice(){
 
 }
 
+function lightPartySpin(el){
+    var tableRef = document.getElementById('row_container');
+    var rowCount = tableRef.childElementCount;
+    var playerName = tableRef.querySelector("input");
+    var player;
+
+    while(rowCount < 4 ){
+        addPlayer();
+        player = midnightGang[rowCount];
+        playerName =  tableRef.rows[rowCount].querySelector("input");
+
+        console.log(` adding ${player}`);
+        playerName.setAttribute("placeholder",`${player}`);
+        console.log(playerName);
+
+        rowCount++;
+    }
+}
+
+function fullPartySpin(el){
+    // TDOD: lightPartySpin x 2 
+}
+
+// Single job
 function jobSpin(el){
     var jobNum = getRandomInt(0,MAX_JOBS);
     console.log("healer_taken = " + HEALER_TAKEN);
@@ -144,3 +187,36 @@ function getRandomInt(min,max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+// event listeners
+const buttonMidnightGang = document.getElementById("midnight-gang");
+buttonMidnightGang.addEventListener("click", spinMidnightGang, false);
+
+
+// mouseover on the footer 
+function onLoad () {
+    var footerImg = document.querySelector("img#helpme");
+    var footerText = document.querySelector("div#help");
+    var isMouseover = false;
+    
+    var tick = function () {
+        footerText.style.left = ((footerImg.offsetLeft + footerImg.offsetWidth / 2) - 320).toFixed(0) + "px";
+        footerText.style.top = ((footerImg.offsetTop + footerImg.offsetWidth / 2) - 115).toFixed(0) + "px";
+        footerText.style.display = (isMouseover) ? "block" : "none";
+    };
+    footerImg.addEventListener("mouseover", function () {
+        isMouseover = true;
+        tick();
+    }, false);
+    footerImg.addEventListener("mouseout", function () {
+        isMouseover = false;
+        tick();
+    }, false);
+    footerText.addEventListener("mouseover", function () {
+        isMouseover = true;
+        tick();
+    }, false);
+    footerText.addEventListener("mouseout", function () {
+        isMouseover = false;
+        tick();
+    }, false);
+}

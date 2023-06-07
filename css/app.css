@@ -3,7 +3,7 @@
 */
 
 html {
-    background-image: url("../img/giphy.gif");
+    background-image: url("../img/Twinkling_Stars.gif");
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     background-color: black;
     background-color: rgb(00000, 0, 0, 00000);
     background-color: black;
-    background-image: url("../img/giphy.gif");
+    background-image: url("../img/Twinkling_Stars.gif");
     color: rgb(240, 245, 245);
     font-family: Comic Sans MS, Comic Sans, Andy, Bradley Hand, Freestyle Script, Lucida Calligraphy, Lucida Handwriting, Mistral, Papyrus;
     font-size: 19.3921085pt;
@@ -146,5 +146,3 @@ img:active {
 img#helpme:hover {
     display: inline-block;
 }
-
-

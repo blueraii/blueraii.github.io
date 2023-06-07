@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/app.css">
         <!-- slap a stylesheet ref here -->
     </head>
-    <body>
+    <body onload="onLoad()">
         <div class="banner">
             <div class="uk-text-center">
                 <img src="img/aaRoulette_spins.gif" style="scale: 0.6;">
@@ -45,7 +45,9 @@
             <div class="uk-margin">
                 <button onclick="slashDice()" class="uk-button uk-button uk-button-secondary uk-text-primary" type="button">
                     <img src="img/TranslateGreen.png">
-                    /dice
+                        <a style="color:aqua">
+                            /dice
+                        </a>
                     <img src="img/TranslateRed.png">
                 </button>
                 <button onclick="addPlayer()" class="uk-button uk-button-secondary" type="button">
@@ -53,28 +55,38 @@
                         Add player
                     </a>
                 </button>
-                <button onclick="spinMidnightGang()" class="midnight-gang">
+                <button id="midnight-gang">
                     <img src="img/Dove.gif" title="midnight gang">
                 </button>
                 <img src="img/arrow_left_ani.gif">
                 click thwe bird
+                <button onclick="removeAllPlayers()" class="destroyAll">
+                    <img src="img/worlddestroy.gif">
+                </button>
             </div>
             
 
-           
+          
+
             <footer class="uk-text-small uk-text-center">
                 <img id="helpme" src="img/ie.gif" title="playstation2">
                 <div id="help">   
+                    <p><b>Patch notes:</b></p>
+                    <p>2023-06-07: accept christ and get a free ps2</p>
+                    <p></p>
+                </div>
+                <div id="activate me when u feel like" style="display: none;">   
                     <p>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</p>
                     <p>FINAL FANTASY XIV © 2010 - 2023 SQUARE ENIX CO., LTD. All Rights Reserved.</p>
-                    <p>spinny zoneは スクウェア・エニックスと関連がありません。</p>
+                    <p>spinny zone は スクウェア・エニックスと関連がありません。</p>
                 </div>
             </footer>
         </div>
-        
-        <script>
 
-        </script>
+            <a href="https://youtu.be/cBuQiWpsN2g" target="_blank">
+                <img src="img/jesusps2.jpeg" style="scale: 0.3;">
+            </a>
+    
 
         <script src="src/uikit.min.js"></script>
         <script src="./src/app.js"></script>
