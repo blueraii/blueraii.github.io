@@ -41,6 +41,25 @@ var jobNames = {
     "18": "RedMage"
 }
 
+var weekdayURL = { 
+    "sunday": "",
+    "monday": "",
+    "tuesday": "",
+    "wednesday": "https://twitter.com/WiiWednesday/status/1666293968252854273",
+    "thursday": "https://twitter.com/Thurs_Phantom/status/1349826229042634760",
+    "friday": "https://twitter.com/CraigWeekend",
+    "saturday": "https://www.youtube.com/watch?v=0mdMCrzI7lY"
+}
+
+const weekday = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
+
+function today(){
+    const date = new Date();
+    const theDay = weekday[date.getDay()];
+    console.log(theDay);
+    return theDay;
+}
+
 function toggleButton(){
     var el = document.getElementById(".destroyAll");
     el.classList.toggle('destroyAll');
@@ -172,6 +191,7 @@ function randDPS(el){
     return randJob(el, 8, MAX_DPS, DPS);
 }
 
+// The heart of the spinny zone
 function randJob(el,min,max,role){
     var jobNum = getRandomInt(min,max);
     var job = jobNames[jobNum];
@@ -187,13 +207,24 @@ function getRandomInt(min,max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+//---- Mouse shit and canvas
+
+
+
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
 buttonMidnightGang.addEventListener("click", spinMidnightGang, false);
 
-
 // mouseover on the footer 
 function onLoad () {
+
+    // set the link for todays weekday
+    var day = document.getElementById("today");
+    day.textContent = `${today()}`;
+    var todayURL = weekdayURL[today()];
+    day.setAttribute("href", `${todayURL}`);
+
+
     var footerImg = document.querySelector("img#helpme");
     var footerText = document.querySelector("div#help");
     var isMouseover = false;
@@ -220,3 +251,4 @@ function onLoad () {
         tick();
     }, false);
 }
+

@@ -3,7 +3,7 @@
     <head>
         <title>spinny zone</title>
         <meta charset="utf-8">
-        <meta name="viewport", content="width=device-width, initial-scale=1">
+        <meta name="viewport", content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="css/uikit.min.css">
         <link rel="stylesheet" href="css/app.css">
@@ -26,9 +26,26 @@
             </div>   
         </div>
 
-        <div id="fireline">
-            
+        <div class="uk-container">
+            <p>today is <a id="today" target="_blank"></a></p> 
         </div>
+
+        <div class="uk-container">
+            <fieldset>
+                <legend>how will you die</legend>
+                <div>
+                    <input type="checkbox" name="mechanic" id="twister" style="margin: 0.4rem;">
+                    <label for="twisters">twister</label> 
+                    <!-- <input type="checkbox" name="mechanic" id="dynamo" style="margin: 0.4rem;">
+                    <label for="twisters">lunar dynamo</label> 
+                    <input type="checkbox" name="mechanic" id="missile" style="margin: 0.4rem;">
+                    <label for="twisters">missile stimulation</label>  -->
+                </div>
+            </fieldset>
+        </div>
+        
+        <canvas id="mechanic-canvas" width="1920" height="1080"></canvas>
+        
 
         <div class="uk-container uk-container-center uk-margin-top">
             <table id="partyTable" class="uk-table uk-table-divider  light-party-table">
@@ -43,7 +60,7 @@
             </table>
 
             <div class="uk-margin">
-                <button onclick="slashDice()" class="uk-button uk-button uk-button-secondary uk-text-primary" type="button">
+                <button id="dice" onclick="slashDice()" class="uk-button uk-button uk-button-secondary uk-text-primary" type="button">
                     <img src="img/TranslateGreen.png">
                         <a style="color:aqua">
                             /dice
@@ -68,12 +85,15 @@
 
           
 
-            <footer class="uk-text-small uk-text-center">
+            <footer class="uk-text-small uk-text-center">  
                 <img id="helpme" src="img/ie.gif" title="playstation2">
-                <div id="help">   
-                    <p><b>Patch notes:</b></p>
-                    <p>2023-06-07: accept christ and get a free ps2</p>
-                    <p></p>
+                <div id="help" class="uk-text-center">   
+                    <p><b>Patch notes</b></p>
+                    <div class="uk-text-left">
+                        <p>2023-06-10: twisters</p>
+                        <p>2023-06-07: accept christ and get a free ps2</p>
+                    </div>
+                    
                 </div>
                 <div id="activate me when u feel like" style="display: none;">   
                     <p>FINAL FANTASY is a registered trademark of Square Enix Holdings Co., Ltd.</p>
@@ -84,11 +104,12 @@
         </div>
 
             <a href="https://youtu.be/cBuQiWpsN2g" target="_blank">
-                <img src="img/jesusps2.jpeg" style="scale: 0.3;">
+                <img src="img/jesusps2.jpg">
             </a>
     
 
         <script src="src/uikit.min.js"></script>
         <script src="./src/app.js"></script>
+        <script src="./src/canvas.js"></script>
     </body>
 </html>
