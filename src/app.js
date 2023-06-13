@@ -43,11 +43,11 @@ var jobNames = {
 
 var weekdayURL = { 
     "sunday": "",
-    "monday": "",
-    "tuesday": "",
-    "wednesday": "https://twitter.com/WiiWednesday/status/1666293968252854273",
-    "thursday": "https://twitter.com/Thurs_Phantom/status/1349826229042634760",
-    "friday": "https://twitter.com/CraigWeekend",
+    "monday": "https://www.youtube-nocookie.com/embed/oMQT7txBj0Y",
+    "tuesday": "https://www.youtube-nocookie.com/embed/4TYdhafjS44",
+    "wednesday": "https://www.youtube-nocookie.com/embed/B_qnI1WrlnU&t",
+    "thursday": "https://www.youtube-nocookie.com/embed/fxV_0CLZhgM",
+    "friday": "https://www.youtube-nocookie.com/embed/V_cnK8Cd6Ag",
     "saturday": "https://www.youtube.com/watch?v=0mdMCrzI7lY"
 }
 
@@ -207,8 +207,6 @@ function getRandomInt(min,max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-//---- Mouse shit and canvas
-
 
 
 // event listeners
@@ -219,10 +217,19 @@ buttonMidnightGang.addEventListener("click", spinMidnightGang, false);
 function onLoad () {
 
     // set the link for todays weekday
-    var day = document.getElementById("today");
+    var day = document.getElementById("weekday");
     day.textContent = `${today()}`;
+
+    var dayVideo = document.getElementById("todayVideo");
     var todayURL = weekdayURL[today()];
-    day.setAttribute("href", `${todayURL}`);
+
+    // doing this becuase saturday is age restricted...
+    if (today() == 'saturday') {
+        day.setAttribute("href", `${todayURL}`);
+    }
+    
+    dayVideo.setAttribute("src", `${todayURL}`);
+
 
 
     var footerImg = document.querySelector("img#helpme");

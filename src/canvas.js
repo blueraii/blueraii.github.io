@@ -12,11 +12,12 @@ const twisterCheckbox = document.getElementById("twister");
 document.addEventListener("change", () => {
     if (twisterCheckbox.checked) {
         document.addEventListener("click", drawTwister);
-        context.clearRect(0, 0, canvas.width, canvas.height);
-    }   
+
+    }
     else {
         document.removeEventListener("click", drawTwister);
-    } 
+
+    }
 });
 
 addEventListener("resize", () => setSize());

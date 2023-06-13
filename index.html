@@ -10,8 +10,8 @@
         <!-- slap a stylesheet ref here -->
     </head>
     <body onload="onLoad()">
-        <div class="banner">
             <div class="uk-text-center">
+
                 <img src="img/aaRoulette_spins.gif" style="scale: 0.6;">
                 <img src="img/fire-under-construction-animation.gif">
                 <img src="img/aaRoulette_spins.gif" style="scale: 0.6;">
@@ -26,9 +26,21 @@
             </div>   
         </div>
 
+        
+        
+
         <div class="uk-container">
-            <p>today is <a id="today" target="_blank"></a></p> 
+            <p>today is <a id="weekday" target="_blank" href="#modal-media-youtube-today" uk-toggle></a></p> 
         </div>
+
+        <div id="modal-media-youtube-today" class="uk-flex-top" uk-modal>
+            <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
+                <button class="uk-modal-close-outside" type="button" uk-close></button>
+                <iframe id="todayVideo" width="1920" height="1080" uk-video uk-responsive></iframe>
+            </div>
+        </div>
+
+        
 
         <div class="uk-container">
             <fieldset>
@@ -83,9 +95,11 @@
             </div>
             
 
-          
+            <a href="https://youtu.be/cBuQiWpsN2g" target="_blank">
+                <img src="img/jesusps2.jpg">
+            </a>
 
-            <footer class="uk-text-small uk-text-center">  
+            <footer class="uk-text-small uk-text-center uk">  
                 <img id="helpme" src="img/ie.gif" title="playstation2">
                 <div id="help" class="uk-text-center">   
                     <p><b>Patch notes</b></p>
@@ -103,9 +117,7 @@
             </footer>
         </div>
 
-            <a href="https://youtu.be/cBuQiWpsN2g" target="_blank">
-                <img src="img/jesusps2.jpg">
-            </a>
+
     
 
         <script src="src/uikit.min.js"></script>
