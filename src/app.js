@@ -45,7 +45,7 @@ var weekdayURL = {
     "sunday": "",
     "monday": "https://www.youtube-nocookie.com/embed/oMQT7txBj0Y",
     "tuesday": "https://www.youtube-nocookie.com/embed/4TYdhafjS44",
-    "wednesday": "https://www.youtube-nocookie.com/embed/B_qnI1WrlnU&t",
+    "wednesday": "https://www.youtube-nocookie.com/embed/B_qnI1WrlnU",
     "thursday": "https://www.youtube-nocookie.com/embed/fxV_0CLZhgM",
     "friday": "https://www.youtube-nocookie.com/embed/V_cnK8Cd6Ag",
     "saturday": "https://www.youtube.com/watch?v=0mdMCrzI7lY"
