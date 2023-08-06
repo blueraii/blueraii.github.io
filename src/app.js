@@ -36,6 +36,7 @@ var jobNames = {
     "13": "Bard",
     "14": "Machinist",
     "15": "Dancer",
+    
     "16": "BlackMage",
     "17": "Summoner",
     "18": "RedMage"
@@ -207,14 +208,33 @@ function getRandomInt(min,max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+function moveFish() {
+    var fishVideo = document.getElementById('yt-fish');
+    fishVideo.setAttribute("class", `uk-position-top-center`);
+    fishVideo.style.display = 'block';
+
+    console.log(fishVideo);
+
+}
 
 
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
-buttonMidnightGang.addEventListener("click", spinMidnightGang, false);
+buttonMidnightGang.addEventListener("click", handler, false);
+
+
+function handler(){
+    spinMidnightGang();
+    moveFish();
+}
+
+
 
 // mouseover on the footer 
 function onLoad () {
+
+    var videoElement = document.getElementById('yt-fish');
+    videoElement.requestPictureInPicture();
 
     // set the link for todays weekday
     var day = document.getElementById("weekday");
