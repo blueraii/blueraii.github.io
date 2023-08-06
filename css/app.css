@@ -134,6 +134,7 @@ img {
     transform-origin: 50% 50%;
     transform: rotateZ(0deg) scale(1, 1);
     transition: transform 1.6s ease;
+    z-index: 2;
 }
 
 img:hover {
@@ -146,6 +147,10 @@ img:active {
 
 img#helpme:hover {
     display: inline-block;
+}
+
+div#yt-fish {
+    z-index: 0;
 }
 
 

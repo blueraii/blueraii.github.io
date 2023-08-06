@@ -43,7 +43,7 @@ var jobNames = {
 }
 
 var weekdayURL = { 
-    "sunday": "",
+    "sunday": "https://www.youtube.com/embed/WIRK_pGdIdA",
     "monday": "https://www.youtube-nocookie.com/embed/oMQT7txBj0Y",
     "tuesday": "https://www.youtube-nocookie.com/embed/4TYdhafjS44",
     "wednesday": "https://www.youtube-nocookie.com/embed/B_qnI1WrlnU",
@@ -217,10 +217,17 @@ function moveFish() {
 
 }
 
+function activatePS2() {
+    var ps2video = document.getElementById('ps2crash');
+    ps2video.style.display = 'block';
+}
 
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
 buttonMidnightGang.addEventListener("click", handler, false);
+
+const jesusps2 = document.getElementById("jesus");
+jesusps2.addEventListener("click", activatePS2, false);
 
 
 function handler(){
@@ -231,9 +238,6 @@ function handler(){
 
 // mouseover on the footer 
 function onLoad () {
-
-    var videoElement = document.getElementById('yt-fish');
-    videoElement.requestPictureInPicture();
 
     // set the link for todays weekday
     var day = document.getElementById("weekday");
