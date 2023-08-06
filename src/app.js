@@ -229,7 +229,6 @@ function handler(){
 }
 
 
-
 // mouseover on the footer 
 function onLoad () {
 
