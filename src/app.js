@@ -79,7 +79,7 @@ function addPlayer(){
     // <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td>
 
     // christ allmighty please change this into something else
-    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank uk-form-width-medium" type="text"  placeholder="Add player name..."></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/healerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
+    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank uk-form-width-medium" type="text"  placeholder="Add player name..."></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/HealerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
 }
 
 function removePlayer(el){
