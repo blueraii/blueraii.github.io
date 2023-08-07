@@ -80,7 +80,6 @@ function removePlayer(el){
         console.log(`removed ${el}`)
 }
 
-// TODO: Let an event listener call this
 function removeAllPlayers(){
     var tableRef = document.getElementById('row_container');
     var rowCount = tableRef.childElementCount;
@@ -210,8 +209,19 @@ function changeTopGifs() {
         img.src = 'img/dancinghat.gif';
         img.style.scale = '1.0';}
     });
+}
 
+function toggleRGBText() {
+    var textRef = document.getElementById('scroll-zone');
 
+    var spanRef = textRef.querySelectorAll("span");
+    spanRef.forEach(span => {
+        if(span.hasAttribute("class"))
+        {span.removeAttribute("class");}
+        else{
+        span.setAttribute("class", `rgb-text`);
+        }
+    });
 }
 
 function activatePS2() {
@@ -219,26 +229,34 @@ function activatePS2() {
     ps2video.style.display = 'block';
 }
 
+
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
 buttonMidnightGang.addEventListener("click", slashDiceHandler, false);
 
 const jesusps2 = document.getElementById("jesus");
-jesusps2.addEventListener("click", activatePS2, false);
+jesusps2.addEventListener("click", jesusHandler, false);
 
 const destroy = document.getElementById("destroyAll");
 destroy.addEventListener("click", destroyHandler, false);
 
+function jesusHandler(){
+    activatePS2();
+}
 
 function slashDiceHandler(){
     spinMidnightGang();
     changeTopGifs();
     toggleFish();
+    replaceInText(document.getElementById('scroll-zone'), 'spinny', 'funky');
+    toggleRGBText();
 }
 
 function destroyHandler(){
     removeAllPlayers();
     toggleFish();
+    replaceInText(document.getElementById('scroll-zone'), 'funky', 'spinny');
+    toggleRGBText();
 }
 
 
@@ -287,3 +305,20 @@ function onLoad () {
     }, false);
 }
 
+// Source: https://stackoverflow.com/questions/5558613/replace-words-in-the-body-text
+// author: funky-future
+// This was better than my janky ass solution
+function replaceInText(element, pattern, replacement) {
+    for (let node of element.childNodes) {
+        switch (node.nodeType) {
+            case Node.ELEMENT_NODE:
+                replaceInText(node, pattern, replacement);
+                break;
+            case Node.TEXT_NODE:
+                node.textContent = node.textContent.replace(pattern, replacement);
+                break;
+            case Node.DOCUMENT_NODE:
+                replaceInText(node, pattern, replacement);
+        }
+    }
+}
