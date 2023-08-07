@@ -62,6 +62,7 @@ function today(){
     return theDay;
 }
 
+// TODO: Change name to something better
 function toggleButton(){
     var el = document.getElementById(".destroyAll");
     el.classList.toggle('destroyAll');
@@ -77,10 +78,8 @@ function addPlayer(){
 
     var job_elem = document.getElementById('job');
 
-    // <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td>
-
     // christ allmighty please change this into something else
-    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank uk-form-width-medium" type="text"  placeholder="Add player name..."></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/HealerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
+    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank " type="text"  placeholder="Add player name..."></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/HealerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
 }
 
 function removePlayer(el){
@@ -137,16 +136,6 @@ function slashDice(){
 
 }
 
-function lightPartySpin(el){
-    var tableRef = document.getElementById('row_container');
-    var rowCount = tableRef.childElementCount;
-    var playerName = tableRef.querySelector("input");
-    var player;
-
-    while(rowCount < 4 ){
-    }
-}
-
 function fullPartySpin(el){
     // TDOD: lightPartySpin x 2 
 }
@@ -163,11 +152,11 @@ function jobSpin(el){
         case (TANK_TAKEN && HEALER_TAKEN):
             randDPS(el);
             break;
-        case (jobNum > MAX_TANK && jobNum < MAX_HEAL && !HEALER_TAKEN):
+        case (jobNum > MAX_TANK  && jobNum < MAX_HEAL && !HEALER_TAKEN):
             randHealer(el);
             HEALER_TAKEN = true;
             break;
-        case (jobNum < MAX_TANK && !TANK_TAKEN):
+        case (jobNum < MAX_TANK  && !TANK_TAKEN):
             randTank(el);
             TANK_TAKEN = true;
             break;
@@ -249,7 +238,6 @@ function onLoad () {
     }
     
     dayVideo.setAttribute("src", `${todayURL}`);
-
 
 
     var footerImg = document.querySelector("img#helpme");
