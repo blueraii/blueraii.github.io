@@ -62,13 +62,6 @@ function today(){
     return theDay;
 }
 
-// TODO: Change name to something better
-function toggleButton(){
-    var el = document.getElementById(".destroyAll");
-    el.classList.toggle('destroyAll');
-}
-
-
 function addPlayer(){
 
     var tableRef = document.getElementById('row_container');
@@ -87,6 +80,7 @@ function removePlayer(el){
         console.log(`removed ${el}`)
 }
 
+// TODO: Let an event listener call this
 function removeAllPlayers(){
     var tableRef = document.getElementById('row_container');
     var rowCount = tableRef.childElementCount;
@@ -194,12 +188,29 @@ function getRandomInt(min,max){
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function moveFish() {
+function toggleFish() {
     var fishVideo = document.getElementById('yt-fish');
     fishVideo.setAttribute("class", `uk-position-top-center`);
-    fishVideo.style.display = 'block';
+    
+    if(fishVideo.style.display == 'none'){
+        fishVideo.style.display = 'block';
+    }
+    else {fishVideo.style.display = 'none';}
+}
 
-    console.log(fishVideo);
+
+function changeTopGifs() {
+    var topBannerRef = document.getElementById('top-banner');
+    var gifCount = topBannerRef.childElementCount;
+
+    var gifRef = topBannerRef.querySelectorAll("img");
+    gifRef.forEach(img => {
+        if (!img.src.endsWith('fire-under-construction-animation.gif')){
+        console.log("old src = " + img.src )
+        img.src = 'img/dancinghat.gif';
+        img.style.scale = '1.0';}
+    });
+
 
 }
 
@@ -210,15 +221,24 @@ function activatePS2() {
 
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
-buttonMidnightGang.addEventListener("click", handler, false);
+buttonMidnightGang.addEventListener("click", slashDiceHandler, false);
 
 const jesusps2 = document.getElementById("jesus");
 jesusps2.addEventListener("click", activatePS2, false);
 
+const destroy = document.getElementById("destroyAll");
+destroy.addEventListener("click", destroyHandler, false);
 
-function handler(){
+
+function slashDiceHandler(){
     spinMidnightGang();
-    moveFish();
+    changeTopGifs();
+    toggleFish();
+}
+
+function destroyHandler(){
+    removeAllPlayers();
+    toggleFish();
 }
 
 
