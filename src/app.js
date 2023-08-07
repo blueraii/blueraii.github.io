@@ -33,6 +33,7 @@ var jobNames = {
     "10": "Ninja",
     "11": "Samurai",
     "12": "Reaper",
+
     "13": "Bard",
     "14": "Machinist",
     "15": "Dancer",
@@ -143,15 +144,6 @@ function lightPartySpin(el){
     var player;
 
     while(rowCount < 4 ){
-        addPlayer();
-        player = midnightGang[rowCount];
-        playerName =  tableRef.rows[rowCount].querySelector("input");
-
-        console.log(` adding ${player}`);
-        playerName.setAttribute("placeholder",`${player}`);
-        console.log(playerName);
-
-        rowCount++;
     }
 }
 
@@ -164,17 +156,18 @@ function jobSpin(el){
     var jobNum = getRandomInt(0,MAX_JOBS);
     console.log("healer_taken = " + HEALER_TAKEN);
     console.log("tank_taken = " + TANK_TAKEN);
+    console.log("initial jobNum = " + jobNum);
 
     // Okay just kidding, this is uglier
     switch(true) {
         case (TANK_TAKEN && HEALER_TAKEN):
             randDPS(el);
             break;
-        case (jobNum > MAX_TANK && jobNum < MAX_HEAL):
+        case (jobNum > MAX_TANK && jobNum < MAX_HEAL && !HEALER_TAKEN):
             randHealer(el);
             HEALER_TAKEN = true;
             break;
-        case (jobNum < MAX_TANK):
+        case (jobNum < MAX_TANK && !TANK_TAKEN):
             randTank(el);
             TANK_TAKEN = true;
             break;
