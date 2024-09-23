@@ -276,7 +276,7 @@ function jesusHandler(){
 
 function midnightGangHandler(){
     spinMidnightGang();
-    replaceGifs('top-banner', 'fire-under-construction-animation.gif', 'img/skele.gif');
+    replaceGifs('top-banner', 'fire-under-construction-animation.gif', 'img/dancinghat.gif');
     replaceGifs('scroll-zone', 'wheelchair.gif', 'img/wheelchair_ani.gif');
     toggleFish();
     replaceInText(document.getElementById('scroll-zone'), 'spinny', 'funky');
