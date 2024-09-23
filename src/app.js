@@ -173,11 +173,11 @@ function jobSpin(el){
 
 // FIXME: gurl, what the fuck are those magic numbers doing, casting spells??  
 function randTank(el){
-    return randJob(el, 0, MAX_TANK, jobNames);
+    return randJob(el, 0, MAX_TANK, TANKS, jobNames);
 }
 
 function randHealer(el){
-    return randJob(el, 4, MAX_HEAL, jobNames);
+    return randJob(el, 4, MAX_HEAL, HEALERS, jobNames);
 }
 
 function randDPS(el){
