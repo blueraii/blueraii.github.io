@@ -47,7 +47,7 @@ var jobNames = {
 
     "14": "Bard",
     "15": "Machinist",
-    "116": "Dancer",
+    "16": "Dancer",
     
     "17": "BlackMage",
     "18": "Summoner",
