@@ -5,5 +5,8 @@ Really just a personal playground for me and my friends, taken a lot of inspirat
 
 BEWARE: the site is currently NOT optimized at all for mobile devices, browse at your own risk!
 
+TODO: 
+- Add SAOBs' Dagens Ord
+
 Known Issues:
 - Clicking the bird while the table is already partly populated will result in some names not being set.
