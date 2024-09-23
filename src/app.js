@@ -1,14 +1,24 @@
-const MAX_JOBS = 19;
+const MAX_JOBS = 21;
 const MAX_TANK = 4;
 const MAX_HEAL = 8;
-const MAX_DPS = 19;
+const MAX_DPS = 21;
+const MAX_ROLES = 5;
 
+const ROLES = "img/00_ROLE/"
 const TANKS = "img/01_TANK/Job/";
 const HEALERS = "img/02_HEALER/Job/";
 const DPS = "img/03_DPS/Job/";
 
 var TANK_TAKEN = false;
 var HEALER_TAKEN = false;
+
+var roles = {
+    "0": "TankRole",
+    "1": "HealerRole",
+    "2": "MeleeDPS",
+    "3": "RangedDPS",
+    "4": "MagicalDPS"
+}
 
 var midnightGang = {
     "0": "Aerla Aesta",
@@ -33,14 +43,16 @@ var jobNames = {
     "10": "Ninja",
     "11": "Samurai",
     "12": "Reaper",
+    "13": "Viper",
 
-    "13": "Bard",
-    "14": "Machinist",
-    "15": "Dancer",
+    "14": "Bard",
+    "15": "Machinist",
+    "116": "Dancer",
     
-    "16": "BlackMage",
-    "17": "Summoner",
-    "18": "RedMage"
+    "17": "BlackMage",
+    "18": "Summoner",
+    "19": "RedMage",
+    "20": "Pictomancer"
 }
 
 var weekdayURL = { 
@@ -50,7 +62,7 @@ var weekdayURL = {
     "wednesday": "https://www.youtube-nocookie.com/embed/B_qnI1WrlnU",
     "thursday": "https://www.youtube-nocookie.com/embed/fxV_0CLZhgM",
     "friday": "https://www.youtube-nocookie.com/embed/V_cnK8Cd6Ag",
-    "saturday": "https://www.youtube.com/watch?v=0mdMCrzI7lY"
+    "saturday": "https://www.youtube-nocookie.com/embed/9WaYCdQ8FOQ"
 }
 
 const weekday = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
@@ -72,7 +84,7 @@ function addPlayer(){
     var job_elem = document.getElementById('job');
 
     // christ allmighty please change this into something else
-    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank " type="text"  placeholder="Add player name..."></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/HealerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
+    row.innerHTML = '<td><button onclick="jobSpin(this)" class="job" id="job"> <img src="img/questionmarkbg.gif"></button></td><td><input class="uk-input uk-form-blank " type="text"  placeholder="Add player name..."></td> <td><button onClick="randRole(this)" class="role"><img src="img/questionmarkbg.gif"></button></td> <td><button onClick="randTank(this)" class="tank"><img src="img/00_ROLE/TankRole.png"></button></td> <td><button onClick="randHealer(this)" class="healer"><img src="img/00_ROLE/HealerRole.png"></button></td> <td><button onClick="randDPS(this)" class="dps"><img src="img/00_ROLE/DPSRole.png"></button></td> <td><button onclick="removePlayer(this)" class="remove" ><img src="img/trash.gif"></button></td>';
 }
 
 function removePlayer(el){
@@ -159,25 +171,30 @@ function jobSpin(el){
     }
 }
 
+// FIXME: gurl, what the fuck are those magic numbers doing, casting spells??  
 function randTank(el){
-    return randJob(el, 0, MAX_TANK, TANKS);
+    return randJob(el, 0, MAX_TANK, jobNames);
 }
 
 function randHealer(el){
-    return randJob(el, 4, MAX_HEAL, HEALERS);
+    return randJob(el, 4, MAX_HEAL, jobNames);
 }
 
 function randDPS(el){
-    return randJob(el, 8, MAX_DPS, DPS);
+    return randJob(el, 8, MAX_DPS, DPS, jobNames);
+}
+
+function randRole(el){
+    return randJob(el, 0, MAX_ROLES, ROLES, roles);
 }
 
 // The heart of the spinny zone
-function randJob(el,min,max,role){
+function randJob(el,min,max,role,names){
     var jobNum = getRandomInt(min,max);
-    var job = jobNames[jobNum];
+    var job = names[jobNum];
     var imgPath = el.querySelector("img");
 
-    console.log(jobNames[jobNum] + " " +jobNum);
+    console.log(names[jobNum] + " " +jobNum);
     imgPath.setAttribute("src",`${role}${job}.png`);
 
     console.log(imgPath);
@@ -197,18 +214,24 @@ function toggleFish() {
     else {fishVideo.style.display = 'none';}
 }
 
+/*
+* id:       tag id, parent of the node where <img> is placed in HTML
+* cls:      (optional) class name
+* old_src:  name of the gif you want to replace
+* new_src:  path to the gif to replace the old one with
+*/ 
+function replaceGifs(id, old_src, new_src) {
+    var ref = document.getElementById(id);
+    var gifCount = ref.childElementCount;
 
-function changeTopGifs() {
-    var topBannerRef = document.getElementById('top-banner');
-    var gifCount = topBannerRef.childElementCount;
-
-    var gifRef = topBannerRef.querySelectorAll("img");
+    var gifRef = ref.querySelectorAll("img");
     gifRef.forEach(img => {
-        if (!img.src.endsWith('fire-under-construction-animation.gif')){
-        console.log("old src = " + img.src )
-        img.src = 'img/dancinghat.gif';
+        if (!img.src.endsWith(old_src)){
+        console.log("old src = " + img.src );
+        img.src = new_src;
         img.style.scale = '1.0';}
     });
+
 }
 
 function toggleRGBText() {
@@ -229,10 +252,14 @@ function activatePS2() {
     ps2video.style.display = 'block';
 }
 
+function explosion(el){
+    el.setAttribute("src",`img/explosionX3.gif`);
+}
+
 
 // event listeners
 const buttonMidnightGang = document.getElementById("midnight-gang");
-buttonMidnightGang.addEventListener("click", slashDiceHandler, false);
+buttonMidnightGang.addEventListener("click", midnightGangHandler, false);
 
 const jesusps2 = document.getElementById("jesus");
 jesusps2.addEventListener("click", jesusHandler, false);
@@ -240,13 +267,17 @@ jesusps2.addEventListener("click", jesusHandler, false);
 const destroy = document.getElementById("destroyAll");
 destroy.addEventListener("click", destroyHandler, false);
 
+var deer = document.getElementById("rundeer");
+deer.addEventListener("click", explosion(deer), false);
+
 function jesusHandler(){
     activatePS2();
 }
 
-function slashDiceHandler(){
+function midnightGangHandler(){
     spinMidnightGang();
-    changeTopGifs();
+    replaceGifs('top-banner', 'fire-under-construction-animation.gif', 'img/skele.gif');
+    replaceGifs('scroll-zone', 'wheelchair.gif', 'img/wheelchair_ani.gif');
     toggleFish();
     replaceInText(document.getElementById('scroll-zone'), 'spinny', 'funky');
     toggleRGBText();
